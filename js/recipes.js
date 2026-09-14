@@ -1,0 +1,95 @@
+/* =========================================================
+   recipes.js — data resepi permulaan (seed data)
+   Fail data/recipes.json ialah sumber data asal. Salinan sama
+   disimpan di sini sebagai sandaran sekiranya fail dibuka terus
+   dari komputer (file://) di mana fetch() JSON disekat pelayar.
+   ========================================================= */
+
+const DEFAULT_CATEGORIES = [
+  "Semua",
+  "Ayam",
+  "Daging",
+  "Ikan",
+  "Sayur",
+  "Kuih & Pemanis Mulut",
+  "Minuman",
+  "Lain-lain"
+];
+
+const FALLBACK_RECIPES = [
+  {
+    "id": 1, "name": "Ayam Masak Merah", "category": "Ayam", "emoji": "🍗",
+    "cookingTime": "45 min", "servings": "4 orang",
+    "ingredients": ["500g ayam, potong", "2 biji bawang besar, hiris", "3 ulas bawang putih, cincang", "2 sudu besar cili kisar", "3 sudu besar sos tomato", "1 cawan santan", "Garam dan gula secukup rasa"],
+    "instructions": ["Sediakan semua bahan dan bersihkan ayam.", "Panaskan minyak dalam kuali.", "Tumis bawang dan cili kisar sehingga wangi.", "Masukkan ayam dan gaul sebati.", "Masukkan sos tomato dan santan, masak sehingga pekat.", "Perasakan dengan garam dan gula, masak sehingga ayam empuk."],
+    "favorite": true, "createdAt": "2026-09-13"
+  },
+  {
+    "id": 2, "name": "Nasi Goreng Kampung", "category": "Lain-lain", "emoji": "🍚",
+    "cookingTime": "20 min", "servings": "2 orang",
+    "ingredients": ["2 cawan nasi sejuk", "2 sudu besar sambal belacan", "1 biji telur", "Ikan bilis goreng", "Timun untuk hiasan"],
+    "instructions": ["Panaskan minyak dan tumis sambal belacan.", "Masukkan nasi dan gaul rata.", "Buat lubang di tengah, pecahkan telur dan kacau.", "Gaul semua bahan sehingga sebati.", "Hidang dengan ikan bilis dan timun."],
+    "favorite": false, "createdAt": "2026-09-12"
+  },
+  {
+    "id": 3, "name": "Ikan Siakap 3 Rasa", "category": "Ikan", "emoji": "🐟",
+    "cookingTime": "35 min", "servings": "4 orang",
+    "ingredients": ["1 ekor ikan siakap", "3 sudu besar sos cili", "2 sudu besar sos tomato", "1 sudu gula", "2 ulas bawang putih, cincang", "Halia dan serbuk kunyit"],
+    "instructions": ["Bersihkan dan perap ikan dengan kunyit dan garam.", "Goreng ikan sehingga garing, ketepikan.", "Tumis bawang putih dan halia sehingga wangi.", "Masukkan sos cili, sos tomato dan gula.", "Tuang kuah ke atas ikan dan hidang segera."],
+    "favorite": false, "createdAt": "2026-09-11"
+  },
+  {
+    "id": 4, "name": "Tumis Sayur Campur", "category": "Sayur", "emoji": "🥦",
+    "cookingTime": "15 min", "servings": "3 orang",
+    "ingredients": ["1 pucuk brokoli", "1 biji lobak merah", "Sekeping tauhu", "2 ulas bawang putih", "Sos tiram secukupnya"],
+    "instructions": ["Panaskan minyak dan tumis bawang putih.", "Masukkan lobak merah, masak seketika.", "Masukkan brokoli dan tauhu.", "Tambah sos tiram dan sedikit air.", "Masak sehingga sayur separuh masak dan hidang."],
+    "favorite": false, "createdAt": "2026-09-10"
+  },
+  {
+    "id": 5, "name": "Kuih Lapis Pandan", "category": "Kuih & Pemanis Mulut", "emoji": "🍰",
+    "cookingTime": "60 min", "servings": "8 keping",
+    "ingredients": ["500ml santan", "200g tepung beras", "100g tepung ubi", "200g gula", "Pewarna hijau pandan"],
+    "instructions": ["Gaul semua bahan kering dengan santan sehingga licin.", "Bahagikan adunan kepada dua, satu diwarnakan hijau.", "Kukus lapis demi lapis sehingga adunan habis.", "Kukus lapisan akhir selama 20 minit.", "Sejukkan sebelum dipotong."],
+    "favorite": true, "createdAt": "2026-09-09"
+  },
+  {
+    "id": 6, "name": "Kopi Ais Kaw", "category": "Minuman", "emoji": "☕",
+    "cookingTime": "5 min", "servings": "1 gelas",
+    "ingredients": ["2 sudu kopi pekat", "Ais secukupnya", "Susu pekat manis secukupnya"],
+    "instructions": ["Masukkan kopi pekat ke dalam gelas.", "Tambah susu pekat manis mengikut citarasa.", "Masukkan ais dan kacau sebati.", "Hidang segera."],
+    "favorite": false, "createdAt": "2026-09-08"
+  },
+  {
+    "id": 7, "name": "Rendang Daging", "category": "Daging", "emoji": "🍖",
+    "cookingTime": "120 min", "servings": "6 orang",
+    "ingredients": ["1kg daging lembu, potong", "500ml santan pekat", "3 sudu besar rempah rendang", "2 keping daun kunyit", "1 batang serai, diketuk", "Kerisik secukupnya"],
+    "instructions": ["Perap daging dengan rempah rendang.", "Panaskan santan dan masukkan daun kunyit serta serai.", "Masukkan daging dan masak dengan api sederhana.", "Kacau sekali-sekala sehingga kuah pekat.", "Masukkan kerisik dan masak sehingga kering dan berminyak."],
+    "favorite": false, "createdAt": "2026-09-07"
+  },
+  {
+    "id": 8, "name": "Biskut Cornflakes", "category": "Kuih & Pemanis Mulut", "emoji": "🍪",
+    "cookingTime": "40 min", "servings": "30 keping",
+    "ingredients": ["250g marjerin", "100g gula aising", "300g tepung", "150g cornflakes, hancurkan sedikit"],
+    "instructions": ["Pukul marjerin dan gula sehingga kembang.", "Masukkan tepung sedikit demi sedikit.", "Gaul rata dengan cornflakes.", "Bentuk bulat dan susun di atas talam.", "Bakar pada 160°C selama 20 minit."],
+    "favorite": false, "createdAt": "2026-09-06"
+  }
+];
+
+/**
+ * Dapatkan data resepi permulaan.
+ * Cuba fetch data/recipes.json dahulu (berfungsi bila dihoskan di GitHub Pages
+ * atau pelayan tempatan); jika gagal (cth. dibuka terus dari fail), guna
+ * FALLBACK_RECIPES supaya aplikasi tetap berfungsi.
+ */
+async function getSeedRecipes() {
+  try {
+    const res = await fetch("data/recipes.json");
+    if (!res.ok) throw new Error("Fail JSON tidak dijumpai");
+    const data = await res.json();
+    if (Array.isArray(data) && data.length) return data;
+    throw new Error("Fail JSON kosong");
+  } catch (err) {
+    console.warn("Menggunakan data sandaran (fallback) sebab:", err.message);
+    return FALLBACK_RECIPES;
+  }
+}

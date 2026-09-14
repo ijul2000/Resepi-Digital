@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResepiKu — Simpan • Masak • Nikmati</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>👩‍🍳</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="header-inner container">
+    <a href="#" class="brand" data-nav="home">
+      <span class="brand-mark" aria-hidden="true">🍲</span>
+      <span class="brand-text">
+        <span class="brand-name">ResepiKu</span>
+        <span class="brand-tag">Simpan • Masak • Nikmati</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#" class="nav-link active" data-nav="home">Laman Utama</a>
+      <a href="#" class="nav-link" data-nav="myrecipes">Resepi Saya</a>
+      <a href="#kategori" class="nav-link" data-nav="home" data-scroll="kategori">Kategori</a>
+      <a href="#" class="nav-link" data-nav="about">Tentang</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-box">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" id="searchInput" placeholder="Cari resepi..." aria-label="Cari resepi">
+      </div>
+      <button class="btn btn-primary" id="openAddBtn">
+        <span aria-hidden="true">+</span> Tambah Resepi
+      </button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ================= HOME VIEW ================= -->
+  <section id="view-home" class="view">
+
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Selamat datang di,</p>
+        <h1 class="hero-title">Resepi<span>Ku</span></h1>
+        <p class="hero-desc">Simpan resepi kegemaran anda, masak dengan lebih mudah — seperti buku resepi keluarga, tetapi sentiasa di hujung jari.</p>
+        <a href="#" class="btn btn-primary btn-lg" id="heroCta">Mula Simpan Resepi →</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 360" class="kitchen-illustration">
+          <defs>
+            <radialGradient id="plateGrad" cx="35%" cy="30%" r="75%">
+              <stop offset="0%" stop-color="#FFFFFF"/>
+              <stop offset="100%" stop-color="#F1E7D7"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="210" cy="300" rx="160" ry="24" fill="#2F5D50" opacity="0.08"/>
+          <circle cx="210" cy="180" r="150" fill="#E5F0E5"/>
+          <circle cx="210" cy="180" r="118" fill="url(#plateGrad)" stroke="#E5D9C4" stroke-width="2"/>
+          <circle cx="210" cy="180" r="86" fill="none" stroke="#E5D9C4" stroke-width="2"/>
+          <g transform="translate(150,120)">
+            <path d="M60 10c22 0 40 16 40 40 0 20-13 34-27 40l4 46a8 8 0 0 1-8 8H51a8 8 0 0 1-8-8l4-46c-14-6-27-20-27-40 0-24 18-40 40-40z" fill="#E8C86A"/>
+            <path d="M45 22c-6 8-6 20 0 26" stroke="#FAF7F0" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </g>
+          <g transform="translate(230,150) rotate(18)">
+            <rect x="0" y="0" width="10" height="70" rx="5" fill="#6F9F7D"/>
+            <path d="M-6 0 h22 a6 6 0 0 1 -22 0z" fill="#2F5D50"/>
+          </g>
+          <g transform="translate(140,150) rotate(-14)">
+            <rect x="0" y="0" width="8" height="66" rx="4" fill="#6F9F7D"/>
+            <circle cx="4" cy="-6" r="10" fill="#2F5D50"/>
+          </g>
+          <circle cx="120" cy="260" r="16" fill="#E85B5B" opacity="0.85"/>
+          <circle cx="150" cy="270" r="12" fill="#E85B5B" opacity="0.7"/>
+          <circle cx="290" cy="255" r="14" fill="#6F9F7D"/>
+          <circle cx="315" cy="270" r="10" fill="#2F5D50"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- KATEGORI -->
+    <section class="section container" id="kategori">
+      <h2 class="section-title">Kategori Resepi</h2>
+      <div class="category-chips" id="categoryChips"></div>
+    </section>
+
+    <!-- RESEPI TERBARU -->
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="section-title">Resepi Terbaru</h2>
+        <a href="#" class="link-more" data-nav="myrecipes">Lihat Semua →</a>
+      </div>
+      <div class="recipe-grid" id="homeGrid"></div>
+      <p class="empty-state" id="homeEmpty" hidden>Tiada resepi dijumpai.</p>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section features container">
+      <div class="feature-card">
+        <span class="feature-icon">📒</span>
+        <h3>Simpan Resepi</h3>
+        <p>Simpan resepi kegemaran anda dalam satu tempat yang kemas.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔍</span>
+        <h3>Mudah Dicari</h3>
+        <p>Cari resepi mengikut kategori, nama atau bahan.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">❤️</span>
+        <h3>Kegemaran Anda</h3>
+        <p>Tandakan resepi kegemaran untuk akses lebih cepat.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🍽️</span>
+        <h3>Masak Dengan Gembira</h3>
+        <p>Jadikan setiap hidangan lebih bermakna.</p>
+      </div>
+    </section>
+  </section>
+
+  <!-- ================= RESEPI SAYA VIEW ================= -->
+  <section id="view-myrecipes" class="view" hidden>
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="section-title">Resepi Saya</h2>
+        <select id="sortSelect" class="sort-select" aria-label="Susun resepi">
+          <option value="terbaru">Terbaru</option>
+          <option value="terlama">Terlama</option>
+          <option value="az">A-Z</option>
+          <option value="za">Z-A</option>
+        </select>
+      </div>
+      <div class="category-chips" id="myCategoryChips"></div>
+      <div class="recipe-grid" id="myGrid"></div>
+      <p class="empty-state" id="myEmpty" hidden>Tiada resepi dijumpai. Cuba tambah resepi baru anda.</p>
+    </section>
+  </section>
+
+  <!-- ================= TENTANG VIEW ================= -->
+  <section id="view-about" class="view" hidden>
+    <section class="section container about-section">
+      <h2 class="section-title">Tentang ResepiKu</h2>
+      <p>ResepiKu ialah buku resepi digital peribadi anda — tempat menyimpan, mengurus dan menemui semula resepi kegemaran keluarga tanpa perlu mencari-cari dalam buku lama atau skrin telefon yang berselerak.</p>
+      <p>Setiap resepi yang anda tambah disimpan terus di dalam pelayar anda sendiri, jadi ia kekal walaupun selepas anda tutup dan buka semula tab.</p>
+      <p class="about-vision">"Satu tempat untuk semua resepi anda."</p>
+    </section>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">🍲</span>
+      <span class="brand-name">ResepiKu</span>
+    </div>
+    <p class="footer-tagline">Simpan • Masak • Nikmati</p>
+    <p class="footer-copy">© 2026 ResepiKu. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ================= RECIPE DETAIL MODAL ================= -->
+<div class="modal-overlay" id="detailModal" hidden>
+  <div class="modal modal-detail" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <button class="modal-close" data-close="detailModal" aria-label="Tutup">&times;</button>
+    <div class="detail-media" id="detailMedia"></div>
+    <div class="detail-body">
+      <div class="detail-top">
+        <span class="badge" id="detailCategory"></span>
+        <button class="favorite-btn" id="detailFavBtn" aria-label="Tandakan kegemaran">♡</button>
+      </div>
+      <h2 id="detailTitle"></h2>
+      <div class="detail-meta">
+        <span>◷ <span id="detailTime"></span></span>
+        <span>♡ <span id="detailServings"></span></span>
+      </div>
+      <div class="detail-cols">
+        <div>
+          <h3>Bahan-bahan</h3>
+          <ul class="ingredient-list" id="detailIngredients"></ul>
+        </div>
+        <div>
+          <h3>Cara Memasak</h3>
+          <ol class="step-list" id="detailSteps"></ol>
+        </div>
+      </div>
+      <div class="detail-actions">
+        <button class="btn btn-outline" id="detailEditBtn">Edit Resepi</button>
+        <button class="btn btn-danger-outline" id="detailDeleteBtn">Padam</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ADD / EDIT RECIPE MODAL ================= -->
+<div class="modal-overlay" id="formModal" hidden>
+  <div class="modal modal-form" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+    <button class="modal-close" data-close="formModal" aria-label="Tutup">&times;</button>
+    <h2 id="formTitle">Tambah Resepi</h2>
+    <form id="recipeForm">
+      <input type="hidden" id="recipeId">
+      <div class="form-row">
+        <label for="fName">Nama Resepi</label>
+        <input type="text" id="fName" required placeholder="cth. Ayam Masak Merah">
+      </div>
+      <div class="form-row two-col">
+        <div>
+          <label for="fCategory">Kategori</label>
+          <select id="fCategory" required></select>
+        </div>
+        <div>
+          <label for="fEmoji">Ikon Resepi</label>
+          <select id="fEmoji">
+            <option value="🍲">🍲 Hidangan utama</option>
+            <option value="🍗">🍗 Ayam</option>
+            <option value="🍖">🍖 Daging</option>
+            <option value="🐟">🐟 Ikan</option>
+            <option value="🥦">🥦 Sayur</option>
+            <option value="🍰">🍰 Kuih / pencuci mulut</option>
+            <option value="☕">☕ Minuman</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row two-col">
+        <div>
+          <label for="fTime">Masa Memasak</label>
+          <input type="text" id="fTime" required placeholder="cth. 45 minit">
+        </div>
+        <div>
+          <label for="fServings">Jumlah Hidangan</label>
+          <input type="text" id="fServings" required placeholder="cth. 4 orang">
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="fIngredients">Bahan-bahan <span class="hint">(satu setiap baris)</span></label>
+        <textarea id="fIngredients" rows="5" required placeholder="500g ayam&#10;2 biji bawang&#10;3 ulas bawang putih"></textarea>
+      </div>
+      <div class="form-row">
+        <label for="fInstructions">Cara Memasak <span class="hint">(satu langkah setiap baris)</span></label>
+        <textarea id="fInstructions" rows="5" required placeholder="Sediakan semua bahan.&#10;Panaskan minyak.&#10;Tumis bahan sehingga wangi."></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-outline" data-close="formModal">Batal</button>
+        <button type="submit" class="btn btn-primary">Simpan Resepi</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= CONFIRM DELETE MODAL ================= -->
+<div class="modal-overlay" id="confirmModal" hidden>
+  <div class="modal modal-confirm" role="alertdialog" aria-modal="true" aria-labelledby="confirmText">
+    <p id="confirmText">Adakah anda pasti mahu memadam resepi ini?</p>
+    <div class="form-actions">
+      <button class="btn btn-outline" id="confirmCancelBtn">Batal</button>
+      <button class="btn btn-danger" id="confirmDeleteBtn">Padam</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/storage.js"></script>
+<script src="js/recipes.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
