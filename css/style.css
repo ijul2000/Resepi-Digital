@@ -596,3 +596,16 @@ button {
   .container { padding: 0 18px; }
   .section { padding: 30px 18px; }
 }
+
+
+/* ================= IKON REALISTIK (SVG) ================= */
+.brand-mark { display: inline-flex; }
+.brand-mark svg { width: 44px; height: 44px; display: block; filter: drop-shadow(0 3px 5px rgba(47,93,80,.25)); }
+.footer-brand .brand-mark svg { width: 34px; height: 34px; }
+.card-media svg { width: 118px; height: 118px; filter: drop-shadow(0 6px 8px rgba(38,53,47,.18)); transition: transform .25s ease; }
+.recipe-card:hover .card-media svg { transform: scale(1.06) rotate(-2deg); }
+.detail-media svg { width: 170px; height: 170px; filter: drop-shadow(0 8px 10px rgba(38,53,47,.2)); }
+.feature-icon { width: 56px; height: 56px; }
+.feature-icon svg { width: 100%; height: 100%; display: block; }
+.hero-art svg { width: 100%; max-width: 380px; height: auto; filter: drop-shadow(0 16px 20px rgba(47,93,80,.22)); }
+.hero-art { background: radial-gradient(circle at 50% 50%, var(--green-soft) 0 62%, transparent 63%); }
