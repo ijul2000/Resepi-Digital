@@ -154,7 +154,7 @@
 
     const media = document.createElement("div");
     media.className = "card-media";
-    media.textContent = recipe.emoji || "🍽️";
+    media.innerHTML = Icons.get(recipe.emoji);
     const badge = document.createElement("span");
     badge.className = "card-badge";
     badge.textContent = recipe.category;
@@ -271,7 +271,7 @@
     if (!recipe) return;
     currentDetailId = id;
 
-    el.detailMedia.textContent = recipe.emoji || "🍽️";
+    el.detailMedia.innerHTML = Icons.get(recipe.emoji);
     el.detailCategory.textContent = recipe.category;
     el.detailFavBtn.setAttribute("data-fav", String(!!recipe.favorite));
     el.detailFavBtn.textContent = recipe.favorite ? "♥" : "♡";
