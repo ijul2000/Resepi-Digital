@@ -42,8 +42,6 @@
     detailCategory: document.getElementById("detailCategory"),
     detailFavBtn: document.getElementById("detailFavBtn"),
     detailTitle: document.getElementById("detailTitle"),
-    detailTime: document.getElementById("detailTime"),
-    detailServings: document.getElementById("detailServings"),
     detailIngredients: document.getElementById("detailIngredients"),
     detailSteps: document.getElementById("detailSteps"),
     detailEditBtn: document.getElementById("detailEditBtn"),
@@ -56,8 +54,6 @@
     fName: document.getElementById("fName"),
     fCategory: document.getElementById("fCategory"),
     fEmoji: document.getElementById("fEmoji"),
-    fTime: document.getElementById("fTime"),
-    fServings: document.getElementById("fServings"),
     fIngredients: document.getElementById("fIngredients"),
     fInstructions: document.getElementById("fInstructions"),
 
@@ -169,8 +165,6 @@
 
     const meta = document.createElement("div");
     meta.className = "card-meta";
-    const info = document.createElement("span");
-    info.textContent = "◷ " + recipe.cookingTime + "    " + recipe.servings;
     const favBtn = document.createElement("button");
     favBtn.className = "card-fav-btn";
     favBtn.type = "button";
@@ -182,7 +176,6 @@
       toggleFavorite(recipe.id);
     });
 
-    meta.appendChild(info);
     meta.appendChild(favBtn);
     body.appendChild(name);
     body.appendChild(meta);
@@ -276,8 +269,6 @@
     el.detailFavBtn.setAttribute("data-fav", String(!!recipe.favorite));
     el.detailFavBtn.textContent = recipe.favorite ? "♥" : "♡";
     el.detailTitle.textContent = recipe.name;
-    el.detailTime.textContent = recipe.cookingTime;
-    el.detailServings.textContent = recipe.servings;
 
     el.detailIngredients.innerHTML = "";
     (recipe.ingredients || []).forEach((ing) => {
@@ -317,8 +308,6 @@
       el.fName.value = recipe.name;
       el.fCategory.value = recipe.category;
       el.fEmoji.value = recipe.emoji || "🍲";
-      el.fTime.value = recipe.cookingTime;
-      el.fServings.value = recipe.servings;
       el.fIngredients.value = (recipe.ingredients || []).join("\n");
       el.fInstructions.value = (recipe.instructions || []).join("\n");
     } else {
@@ -349,8 +338,6 @@
         recipe.name = el.fName.value.trim();
         recipe.category = el.fCategory.value;
         recipe.emoji = el.fEmoji.value;
-        recipe.cookingTime = el.fTime.value.trim();
-        recipe.servings = el.fServings.value.trim();
         recipe.ingredients = ingredients;
         recipe.instructions = instructions;
       }
@@ -361,8 +348,6 @@
         name: el.fName.value.trim(),
         category: el.fCategory.value,
         emoji: el.fEmoji.value,
-        cookingTime: el.fTime.value.trim(),
-        servings: el.fServings.value.trim(),
         ingredients,
         instructions,
         favorite: false,
